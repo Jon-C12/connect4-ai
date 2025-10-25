@@ -1,44 +1,31 @@
-# === Makefile for Connect 4 AI ===
+# === Makefile for Game Hub ===
 
-# Compiler and flags
-CXX := g++
-CXXFLAGS := -std=c++17 -Wall -Wextra -Iinclude
+CXX := clang++
+CXXFLAGS := -std=c++17 -Wall -Wextra -I. -Iinclude -Iui -Igames
 
-# Directories
-SRC_DIR := src
-OBJ_DIR := build
-BIN_DIR := bin
+SRC := $(wildcard src/*.cpp core/*.cpp ui/*.cpp games/**/*.cpp)
+OBJ := $(SRC:%.cpp=build/%.o)
+DEP := $(OBJ:.o=.d)
 
-# Target executable
-TARGET := $(BIN_DIR)/connect4
+TARGET := bin/gamehub
 
-# Source and object files
-SRC := $(wildcard $(SRC_DIR)/*.cpp)
-OBJ := $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRC))
-
-# Default target
 all: $(TARGET)
 
-# Link step
 $(TARGET): $(OBJ)
-	@mkdir -p $(BIN_DIR)
+	@mkdir -p bin
 	$(CXX) $(OBJ) -o $(TARGET)
 	@echo " Build complete: $(TARGET)"
 
-# Compile each source file into object files
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
-	@mkdir -p $(OBJ_DIR)
+build/%.o: %.cpp
+	@mkdir -p $(dir $@)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Run the program
+-include $(DEP)
+
 run: $(TARGET)
 	./$(TARGET)
 
-# Clean build artifacts
 clean:
-	rm -rf $(OBJ_DIR) $(BIN_DIR)
+	rm -rf build bin
 	@echo " Cleaned build files"
-
-# Rebuild everything
-rebuild: clean all
 
