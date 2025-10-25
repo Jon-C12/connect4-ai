@@ -3,6 +3,7 @@
 #include "games/tictactoe/TicTacToeGame.h"
 #include "games/tictactoe/TicTacToeAI.h"
 #include "ui/TextUI.h"
+#include "utils.h"
 #include <memory>
 #include <iostream>
 
@@ -40,7 +41,6 @@ int main() {
                 int depth1, depth2;
                 std::cout << "Enter AI 1 depth: "; std::cin >> depth1;
                 std::cout << "Enter AI 2 depth: "; std::cin >> depth2;
-                // Currently only supports one AI object
                 ai = std::make_shared<Connect4AI>(std::max(depth1, depth2));
             }
 

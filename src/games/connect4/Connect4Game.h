@@ -1,5 +1,6 @@
 #pragma once
-#include "core/Game.h"
+#include "../../core/Game.h"
+#include <vector>
 
 class Connect4Game : public Game {
 public:

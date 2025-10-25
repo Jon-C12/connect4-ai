@@ -1,8 +1,8 @@
 #pragma once
 #include "Connect4Game.h"
-#include "core/AIPlayer.h"
+#include "../../core/AIPlayer.h"
 #include <vector>
-#include <limits>
+
 
 class Connect4AI : public AIPlayer {
 public:

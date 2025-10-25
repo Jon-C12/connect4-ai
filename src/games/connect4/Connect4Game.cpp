@@ -1,4 +1,4 @@
-#include "games/connect4/Connect4Game.h"
+#include "Connect4Game.h"
 #include <iostream>
 
 constexpr int ROWS = 6;

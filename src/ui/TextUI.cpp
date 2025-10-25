@@ -1,9 +1,9 @@
 #include "TextUI.h"
-#include "core/Game.h"
-#include "core/AIPlayer.h"
-#include <iostream>
+#include "../core/Game.h"
+#include "../core/AIPlayer.h"
 #include <memory>
-#include <vector>
+#include <iostream>
+
 
 void TextUI::run(Game& game, std::shared_ptr<AIPlayer> aiPlayer) {
     game.reset();

@@ -1,7 +1,7 @@
 #pragma once
 #include "../../core/AIPlayer.h"
 #include "TicTacToeGame.h"
-#include <memory>
+#include <vector>
 
 class TicTacToeAI : public AIPlayer {
 public:

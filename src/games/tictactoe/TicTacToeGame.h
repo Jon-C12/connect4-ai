@@ -1,7 +1,6 @@
 #pragma once
-#include "../core/Game.h"
+#include "../../core/Game.h"
 #include <vector>
-#include <string>
 
 class TicTacToeGame : public Game {
 public:

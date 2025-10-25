@@ -1,6 +1,6 @@
 #pragma once
-#include "core/Game.h"
-#include "core/AIPlayer.h"
+#include "../core/Game.h"
+#include "../core/AIPlayer.h"
 #include <memory>
 
 class TextUI {

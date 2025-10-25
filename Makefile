@@ -1,31 +1,43 @@
-# === Makefile for Game Hub ===
+# Compiler
+CXX = clang++
+CXXFLAGS = -std=c++17 -Wall -Wextra
 
-CXX := clang++
-CXXFLAGS := -std=c++17 -Wall -Wextra -I. -Iinclude -Iui -Igames
+# Include directories
+INCLUDES = -Isrc/core -Isrc/ui -Isrc/games -Iinclude
 
-SRC := $(wildcard src/*.cpp core/*.cpp ui/*.cpp games/**/*.cpp)
-OBJ := $(SRC:%.cpp=build/%.o)
-DEP := $(OBJ:.o=.d)
+# Source files
+SRCS = src/main.cpp \
+       src/utils.cpp \
+       src/ui/TextUI.cpp \
+       src/games/connect4/Connect4Game.cpp \
+       src/games/connect4/Connect4AI.cpp \
+       src/games/tictactoe/TicTacToeGame.cpp \
+       src/games/tictactoe/TicTacToeAI.cpp
 
-TARGET := bin/gamehub
+# Object files (build/*.o)
+OBJS = $(patsubst src/%.cpp,build/%.o,$(SRCS))
 
+# Target executable
+TARGET = build/connect4-ai
+
+# Default target
 all: $(TARGET)
 
-$(TARGET): $(OBJ)
-	@mkdir -p bin
-	$(CXX) $(OBJ) -o $(TARGET)
-	@echo " Build complete: $(TARGET)"
-
-build/%.o: %.cpp
+# Link object files
+$(TARGET): $(OBJS)
 	@mkdir -p $(dir $@)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(TARGET)
 
--include $(DEP)
+# Compile source files to object files
+build/%.o: src/%.cpp
+	@mkdir -p $(dir $@)
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
 
-run: $(TARGET)
-	./$(TARGET)
-
+# Clean build files
 clean:
-	rm -rf build bin
-	@echo " Cleaned build files"
+	rm -rf build
+
+# Run files
+run: all
+	./build/connect4-ai
 
