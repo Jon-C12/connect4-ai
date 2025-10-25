@@ -1,0 +1,3 @@
+/Users/bigjonsmac/Desktop/PersonalCS/connect4-ai/build/CMakeFiles/connect4.dir
+/Users/bigjonsmac/Desktop/PersonalCS/connect4-ai/build/CMakeFiles/edit_cache.dir
+/Users/bigjonsmac/Desktop/PersonalCS/connect4-ai/build/CMakeFiles/rebuild_cache.dir
